@@ -53,15 +53,6 @@ const Footer = () => {
 						<a href="https://github.com/Ccatalyst" target="_blank" rel="noreferrer">
 							<p>Matthew Todor</p>
 						</a>
-						<a href="https://github.com/Thekid303" target="_blank" rel="noreferrer">
-							<p>Nick Graves</p>
-						</a>
-						<a href="https://github.com/samanthajrexroat" target="_blank" rel="noreferrer">
-							<p>Sam Rexroat</p>
-						</a>
-						<a href="https://github.com/dugan-jo" target="_blank" rel="noreferrer">
-							<p>Joseph Dugan</p>
-						</a>
 					</div>
 					<div>
 						<FooterSocial />
