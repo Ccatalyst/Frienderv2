@@ -1,0 +1,68 @@
+nav {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  position: fixed;
+
+  /* background:   linear-gradient(to top, #ffafbd, #ffc3a0); */
+  /* border-bottom: 5px solid black; */
+  background: linear-gradient(to bottom, #c6ea24, #99f2c8);
+  z-index: 999;
+
+}
+
+
+h1 {
+  font-size: 2.5rem;
+}
+.inline {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 0.6rem;
+}
+
+
+.navInline {
+  align-items: center;
+}
+
+.rounded-btn {
+  padding: 8px;
+  border-radius: 10px;
+  background: linear-gradient(60deg, #ff8102, #f28226e6);
+}
+
+.black {
+  margin-left: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 1px;
+  border-radius: 5px;
+  align-content: center;
+  background: rgba(0, 0, 0, 0.335)
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.none {
+  display: none;
+}
+
+.logoContainer {
+  width: 15rem;
+  margin: 1rem;
+  color: var(--color-bg);
+}
+
+
