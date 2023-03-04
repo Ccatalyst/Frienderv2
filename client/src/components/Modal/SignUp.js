@@ -28,11 +28,9 @@ const Signup = () => {
 	const handleChange = (e) => {
 		let value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 		const name = e.target.name;
-
 		if (name === "age") {
 			value = parseInt(value);
 		}
-
 		setFormData((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -95,7 +93,6 @@ const Signup = () => {
 										onChange={handleChange}
 									/>
 								</label>
-
 								<label className="div3">
 									E-Mail
 									<input
@@ -211,11 +208,9 @@ const Signup = () => {
 								<input type="url" name="photo" id="photo" onChange={handleChange} value={formData.photo} />
 								<div className="div10 photo-container rounded-input">{formData.photo && <img src={formData.photo} alt="profile pic preview" />}</div>
 							</div>
-							{/* <Link to="/me"> */}
 							<button className="primary-btn" type="submit">
 								Submit
 							</button>
-							{/* </Link> */}
 						</form>
 					)}
 

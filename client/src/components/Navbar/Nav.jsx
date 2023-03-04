@@ -23,7 +23,6 @@ const Nav = () => {
 							<Link to="/me">
 								<Button value="View Profile" type="button" />
 							</Link>
-
 							<Link to="/">
 								<Button
 									value="Logout"
@@ -39,7 +38,6 @@ const Nav = () => {
 							<Link to="/LogIn">
 								<Button value="LogIn" type="button" />
 							</Link>
-
 							<Link to="/SignUp">
 								<Button value="Signup" type="button" />
 							</Link>
