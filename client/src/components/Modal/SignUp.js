@@ -15,16 +15,15 @@ const Signup = () => {
 		city: "",
 		age: !null,
 		password: "",
+		confirmPassword: "",
 		photo: "",
 		matches: [],
 	});
 
 	const [createUser, { error, data }] = useMutation(CREATE_USER);
-
 	if (error) {
 		console.error(JSON.stringify(error));
 	}
-
 	const handleChange = (e) => {
 		let value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 		const name = e.target.name;
@@ -36,22 +35,20 @@ const Signup = () => {
 			[name]: value,
 		}));
 	};
-
-	/////////////////////////////////////////////
-	//                                         //
-	//    PASSWORD / CONFIRM PASSWORD CHECK    //
-	//                                         //
-	/////////////////////////////////////////////
-
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-		try {
-			const { data } = await createUser({
-				variables: { ...formData },
-			});
-			Auth.login(data.createUser.token);
-		} catch (e) {
-			console.error(JSON.stringify(e));
+		if (formData.confirmPassword !== formData.password) {
+			alert("Your passwords do not match. Please confirm and try again.");
+			error.message = "Your passwords do not match. Please confirm and try again.";
+		} else {
+			try {
+				const { data } = await createUser({
+					variables: { ...formData },
+				});
+				Auth.login(data.createUser.token);
+			} catch (e) {
+				console.error(JSON.stringify(e));
+			}
 		}
 	};
 	return (
@@ -173,35 +170,19 @@ const Signup = () => {
 										onChange={handleChange}
 									/>
 								</label>
-								{/* <label>
-                  Confirm Password
-                  <input
-                    className="rounded-input"
-                    type="Password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    placeholder="confirm Password"
-                    // required={true}
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                </label> */}
-								{/* <label>
-                  Upload a Photo
-                  <input
-                    className="rounded-input"
-                    type="url"
-                    name="url"
-                    id="url"
-                    onChange={handleChange}
-                    value={formData.url}
-                    // required={true}
-                  />
-                  <div className="photo-container">
-                       <img src={formData.url} alt="profile pic" />
-                  </div>
-                </label> */}
-
+								<label>
+									Confirm Password
+									<input
+										className="rounded-input"
+										type="Password"
+										id="confirmPassword"
+										name="confirmPassword"
+										placeholder="confirm Password"
+										required={true}
+										value={formData.confirmPassword}
+										onChange={handleChange}
+									/>
+								</label>
 								<label className="div9 rounded-input" htmlFor="url">
 									Profile Photo
 								</label>
@@ -213,10 +194,8 @@ const Signup = () => {
 							</button>
 						</form>
 					)}
-
 					{error && <div className="primary-btn">{error.message}</div>}
 				</div>
-
 				<h6>Already have an account?</h6>
 				<Link to="/LogIn">
 					<h6>LOG IN</h6>
