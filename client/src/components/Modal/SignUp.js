@@ -5,6 +5,8 @@ import { Link, Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import { TextField, RadioGroup, FormLabel, FormControl, FormControlLabel, Radio } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const Signup = () => {
 	const [formData, setFormData] = useState({
@@ -25,7 +27,7 @@ const Signup = () => {
 		console.error(JSON.stringify(error));
 	}
 	const handleChange = (e) => {
-		let value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		let value = e.target.value;
 		const name = e.target.name;
 		if (name === "age") {
 			value = parseInt(value);
@@ -52,8 +54,8 @@ const Signup = () => {
 		}
 	};
 	return (
-		<div className=" signUpBackground">
-			<div className="signUpContainer signUpModal">
+		<Grid container className=" signUpBackground">
+			<Grid className="signUpContainer signUpModal">
 				<Link to="/">
 					<div className="closeIcon">ⓧ</div>
 				</Link>
@@ -63,132 +65,95 @@ const Signup = () => {
 						<Navigate to="/me" />
 					) : (
 						<form className="signUpForm" onSubmit={handleFormSubmit}>
-							<div className="block">
-								<label className="div1">
-									First Name
-									<input
-										className="rounded-input"
-										type="text"
-										id="firstName"
-										name="firstName"
-										placeholder="First Name"
-										required="true"
-										value={formData.firstName}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="div2">
-									Last Name
-									<input
-										className="rounded-input"
-										type="text"
-										id="lastName"
-										name="lastName"
-										placeholder="Last Name"
-										required="true"
-										value={formData.lastName}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="div3">
-									E-Mail
-									<input
-										className="rounded-input"
-										type="email"
-										id="email"
-										name="email"
-										placeholder="E-Mail"
-										required="true"
-										value={formData.email}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="div4">
-									City
-									<input
-										className="rounded-input"
-										type="text"
-										id="city"
-										name="city"
-										placeholder="City"
-										required="true"
-										value={formData.city}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="div5">
-									Age
-									<input
-										className="rounded-input"
-										type="number"
-										id="age"
-										name="age"
-										placeholder="Age"
-										required="true"
-										value={formData.age}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="radio-inline div6">
-									Gender
-									<label>
-										<input className="rounded-input" type="radio" id="male" value="male" name="gender" placeholder="Male" />
-										Male
-									</label>
-									<label>
-										<input className="rounded-input" type="radio" id="female" value="female" name="gender" placeholder="Female" />
-										Female
-									</label>
-									<label>
-										<input className="rounded-input" type="radio" id="other" value="other" name="gender" placeholder="Other" />
-										Other
-									</label>
-								</label>
-								<label className="div7">
-									<textarea
-										className="fullWidth rounded-input"
-										type="textarea"
-										id="description"
-										name="description"
-										placeholder="Tell us about yourself!"
-										required="true"
-										value={formData.description}
-										onChange={handleChange}
-									/>
-								</label>
-								<br />
-								<label className="div8">
-									Password
-									<input
-										className="rounded-input"
-										type="password"
-										id="password"
-										name="password"
-										placeholder="password"
-										required="true"
-										value={formData.password}
-										onChange={handleChange}
-									/>
-								</label>
-								<label>
-									Confirm Password
-									<input
-										className="rounded-input"
-										type="Password"
-										id="confirmPassword"
-										name="confirmPassword"
-										placeholder="confirm Password"
-										required={true}
-										value={formData.confirmPassword}
-										onChange={handleChange}
-									/>
-								</label>
-								<label className="div9 rounded-input" htmlFor="url">
-									Profile Photo
-								</label>
-								<input type="url" name="photo" id="photo" onChange={handleChange} value={formData.photo} />
-								<div className="div10 photo-container rounded-input">{formData.photo && <img src={formData.photo} alt="profile pic preview" />}</div>
-							</div>
+							<TextField
+								label="First Name"
+								type="text"
+								id="firstName"
+								name="firstName"
+								placeholder="First Name"
+								required
+								value={formData.firstName}
+								onChange={handleChange}
+							/>
+							<TextField
+								label="Last Name"
+								type="text"
+								id="lastName"
+								name="lastName"
+								placeholder="Last Name"
+								required
+								value={formData.lastName}
+								onChange={handleChange}
+							/>
+							<br />
+							<TextField
+								label="Email"
+								type="email"
+								id="email"
+								name="email"
+								placeholder="E-Mail"
+								required
+								value={formData.email}
+								onChange={handleChange}
+							/>
+							<TextField label="City" type="text" id="city" name="city" placeholder="City" required value={formData.city} onChange={handleChange} />
+							<br />
+							<TextField label="Age" type="number" id="age" name="age" placeholder="Age" required value={formData.age} onChange={handleChange} />
+							<FormControl>
+								<FormLabel id="gender-radio-buttons-group-label">Gender</FormLabel>
+								<RadioGroup aria-labelledby="gender-radio-buttons-group-label" defaultValue="Male" name="gender-buttons-group" row>
+									<FormControlLabel value="Male" control={<Radio />} label="Male" />
+									<FormControlLabel value="Female" control={<Radio />} label="Female" />
+									<FormControlLabel value="Other" control={<Radio />} label="Other" />
+								</RadioGroup>
+							</FormControl>
+							<TextField
+								fullWidth
+								label="Description"
+								id="description"
+								name="description"
+								placeholder="Tell us about yourself!"
+								required
+								value={formData.description}
+								onChange={handleChange}
+								multiline
+								maxRows={3}
+							/>
+							<br />
+							<TextField
+								label="Password"
+								autoComplete="new-password"
+								type="password"
+								id="password"
+								name="password"
+								placeholder="password"
+								required
+								value={formData.password}
+								onChange={handleChange}
+							/>
+							<br />
+							<TextField
+								label="Confirm Password"
+								autoComplete="new-password"
+								type="Password"
+								id="confirmPassword"
+								name="confirmPassword"
+								placeholder="confirm Password"
+								required
+								value={formData.confirmPassword}
+								onChange={handleChange}
+							/>
+							<br />
+							<TextField
+								label="add photo"
+								type="url"
+								name="photo"
+								id="photo"
+								onChange={handleChange}
+								value={formData.photo}
+								placeholder="Add Photo"
+							/>
+							<div className="div10 photo-container rounded-input">{formData.photo && <img src={formData.photo} alt="profile pic preview" />}</div>
 							<button className="primary-btn" type="submit">
 								Submit
 							</button>
@@ -202,8 +167,8 @@ const Signup = () => {
 				</Link>
 				<br />
 				<h6 className="text-light">By clicking submit you agree to Friender's® terms of service</h6>
-			</div>
-		</div>
+			</Grid>
+		</Grid>
 	);
 };
 
