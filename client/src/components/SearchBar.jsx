@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/index.css";
 
 import Input from "@mui/material/Input";
 import Grid from "@mui/material/Grid";

@@ -1,6 +1,4 @@
 import React from "react";
-import "../../assets/index.css";
-import "./footer.css";
 import FooterSocial from "./FooterSocial";
 import CommentsData from "./commentsData";
 

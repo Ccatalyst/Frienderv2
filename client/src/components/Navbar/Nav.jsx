@@ -1,7 +1,7 @@
 import React from "react";
 import { TiThMenuOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
-import { Button } from "../Button";
+import { Button } from "@mui/material";
 import Auth from "../../utils/auth";
 import Grid from "@mui/material/Grid";
 
@@ -20,10 +20,13 @@ const Nav = () => {
 					{Auth.loggedIn() ? (
 						<>
 							<Link to="/me">
-								<Button value="View Profile" type="button" />
+								<Button variant="contained" value="View Profile" type="button">
+									Profile
+								</Button>
 							</Link>
 							<Link to="/">
 								<Button
+									variant="contained"
 									value="Logout"
 									onClick={() => {
 										Auth.logout();
@@ -35,10 +38,14 @@ const Nav = () => {
 					) : (
 						<>
 							<Link to="/LogIn">
-								<Button value="LogIn" type="button" />
+								<Button variant="contained" value="LogIn" type="button">
+									Log In
+								</Button>
 							</Link>
 							<Link to="/SignUp">
-								<Button value="Signup" type="button" />
+								<Button variant="contained" value="Signup" type="button">
+									Register
+								</Button>
 							</Link>
 						</>
 					)}

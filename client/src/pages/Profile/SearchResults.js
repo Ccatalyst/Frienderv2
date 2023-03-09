@@ -1,5 +1,4 @@
 import React from "react";
-import "./profile.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_HOBBY_FANS } from "../../utils/queries";
 import AddFriend from "../../components/Modal/Addfriend";

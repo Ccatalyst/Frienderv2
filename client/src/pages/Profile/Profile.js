@@ -1,5 +1,4 @@
 import React from "react";
-import "./profile.css";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { useQuery } from "@apollo/client";
