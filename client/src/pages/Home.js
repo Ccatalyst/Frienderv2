@@ -9,15 +9,19 @@ const Homepage = () => {
 		<Grid container>
 			<Grid xs={11} md={6} sx={{ m: "auto" }}>
 				<Paper>
-					<Typography variant="h4" component="h1">
+					<Typography variant="h4" component="h1" sx={{ m: 2 }} align="center">
 						Find Connections!
 					</Typography>
-					<Link to="/SignUp">
-						<Button variant="contained">Register</Button>
-					</Link>
+					<Grid xs={1} sx={{ m: "auto" }}>
+						<Link to="/SignUp">
+							<Button variant="contained" sx={{ my: 1 }}>
+								Register
+							</Button>
+						</Link>
+					</Grid>
 				</Paper>
 			</Grid>
-			<Grid xs={12}>
+			<Grid container xs={12}>
 				<Footer />
 			</Grid>
 		</Grid>
