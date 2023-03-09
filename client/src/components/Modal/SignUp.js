@@ -1,5 +1,4 @@
 import React from "react";
-import "./modal.css";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
@@ -55,7 +54,10 @@ const Signup = () => {
 	};
 	return (
 		<Grid container className=" signUpBackground">
-			<Grid className="signUpContainer signUpModal">
+			<Grid
+				className="signUpContainer signUpModal"
+				sx={{ borderWidth: 4, borderStyle: "solid", borderImage: "linear-gradient(0deg, #8068b1, #54b9a3) 1" }}
+			>
 				<Link to="/">
 					<div className="closeIcon">ⓧ</div>
 				</Link>

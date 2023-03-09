@@ -1,5 +1,4 @@
 import React from "react";
-import "./modal.css";
 import { useMutation } from "@apollo/client";
 import { REMOVE_FRIEND } from "../../utils/mutations";
 

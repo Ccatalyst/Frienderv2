@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../components/Modal/modal.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
@@ -45,7 +44,7 @@ const EditProfile = () => {
 		console.log(JSON.stringify(error));
 	}
 
-	const handleChange = e => {
+	const handleChange = (e) => {
 		const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 		const name = e.target.name;
 		setModifiableData({ ...modifiableData, [name]: value });

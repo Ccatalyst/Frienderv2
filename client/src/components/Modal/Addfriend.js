@@ -1,4 +1,3 @@
-import "./modal.css";
 import { useMutation } from "@apollo/client";
 import { ADD_FRIEND } from "../../utils/mutations";
 import Auth from "../../utils/auth";

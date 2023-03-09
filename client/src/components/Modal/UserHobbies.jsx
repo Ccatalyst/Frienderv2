@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./modal.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import Grid from "@mui/material/Grid";
